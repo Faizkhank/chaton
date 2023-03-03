@@ -1,0 +1,20 @@
+body
+{
+    background-color: rgb(11, 44, 44);
+    justify-content: center;
+    height: 100vh;
+}
+.login
+{
+    width: 450px;
+    height: 25em;
+    margin-top: 250px;
+    justify-content: center;
+}
+@media(max-width:900px){
+    .login
+    {
+        width: 100%;
+    }
+    
+}

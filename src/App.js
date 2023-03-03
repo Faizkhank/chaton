@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Auth from './component/Auth';
+import {AnimatePresence} from 'framer-motion';
+import Main from './component/Main';
+import { AuthContextProvider } from "./context/AuthContext";
+import Protected from "./component/Protected";
+import Navbar from "./component/Navbar";
+import { ContextProvider } from './Services/services';
+import Conference from "./component/conference";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return (<BrowserRouter>
+  <AuthContextProvider>
+  <ContextProvider>
+  <AnimatePresence>
+   <Routes>
+    <Route path='/' element={<Conference/>}></Route>
+    <Route path='/main' element={<Protected><Navbar/><Main/></Protected>}></Route>
+   </Routes>
+   </AnimatePresence>
+   </ContextProvider>
+   </AuthContextProvider>
+  </BrowserRouter>);
 }
 
 export default App;
